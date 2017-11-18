@@ -10,6 +10,7 @@ package util;
  * @author danielalvarado
  */
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -78,6 +79,10 @@ public class DBConnection {
     
     public static boolean isConnected() {
         return dbConnected;
+    }
+
+    public CallableStatement prepareCall(String INSERT_PROD_ORDER) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
