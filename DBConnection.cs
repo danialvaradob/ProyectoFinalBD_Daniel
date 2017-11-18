@@ -8,6 +8,21 @@ namespace PROD_DB
         private static Boolean connected;
 
         private DBConnection() {
+            
+
+        }
+
+
+        public static DBConnection getInstance()
+        {
+            if (connectionInstance == null) {
+                connectionInstance = new DBConnection();
+            }
+            return connectionInstance;
+
+        }
+
+        public SqlConnection connect() {
             try
             {
                 connection = new SqlConnection("user id=username;" +
@@ -17,20 +32,13 @@ namespace PROD_DB
                                                "connection timeout=30");
                 Console.WriteLine("Connected to DATABASE");
                 connected = true;
-            } catch (Exception e) {
+                return connection;
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.ToString());
             }
-
-        }
-
-
-        public static DBConnection Instance()
-        {
-            if (connectionInstance == null) {
-                connectionInstance = new DBConnection();
-            }
-            return connectionInstance;
-
+            return null;
         }
 
         public void close() {
